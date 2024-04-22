@@ -1,18 +1,19 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 
 @Component({
   selector: 'app-license-plate',
   standalone: true,
   templateUrl: './license-plate.component.html',
-  styleUrls: ['./license-plate.component.css']
+  styleUrls: ['./license-plate.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LicensePlateComponent {
 
-  @Input()
-  plate!: LicensePlate;
+  plate = input.required<LicensePlate>();
 
-  @Input()
-  buttonText!: string;
+  buttonText = input<string>();
+
+  buttonClicked = output<LicensePlate>();
 
 }
