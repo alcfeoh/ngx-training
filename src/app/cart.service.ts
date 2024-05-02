@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Injectable, Signal, signal, WritableSignal} from '@angular/core';
+import {Observable, switchMap} from 'rxjs';
 import {LicensePlate} from './license-plate';
 import {HttpClient} from '@angular/common/http';
 
@@ -8,18 +8,31 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CartService {
 
+  private readonly licensePlates: WritableSignal<LicensePlate[]> = signal([]);
+
+
   constructor(private http: HttpClient) { }
 
-  getCartContents(): Observable<LicensePlate[]> {
-    return this.http.get<LicensePlate[]>('http://localhost:8000/cart');
+  getCartContents(): Signal<LicensePlate[]> {
+    this.http.get<LicensePlate[]>('http://localhost:8000/cart')
+      .subscribe(cartContents => this.licensePlates.set(cartContents));
+    return this.licensePlates;
   }
 
-  addToCart(plate: LicensePlate): Observable<unknown> {
-    return this.http.put('http://localhost:8000/cart/' + plate._id, null);
+  addToCart(plate: LicensePlate) {
+    this.http.put('http://localhost:8000/cart/' + plate._id, null)
+      .pipe(
+        switchMap(() => this.http.get<LicensePlate[]>('http://localhost:8000/cart'))
+      )
+      .subscribe(cartContents => this.licensePlates.set(cartContents));
   }
 
-  removeFromCart(plate: LicensePlate): Observable<unknown> {
-    return this.http.delete('http://localhost:8000/cart/' + plate._id);
+  removeFromCart(plate: LicensePlate) {
+    this.http.delete('http://localhost:8000/cart/' + plate._id)
+      .pipe(
+        switchMap(() => this.http.get<LicensePlate[]>('http://localhost:8000/cart'))
+      )
+      .subscribe(cartContents => this.licensePlates.set(cartContents));
   }
 
 }
