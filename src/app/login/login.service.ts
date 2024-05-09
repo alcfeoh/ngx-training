@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<string> {
-    return this.http.put<{token: string}>('http://localhost:8000/login', {username, password})
+    return this.http.put<{token: string}>('https://lp-store-server.vercel.app/login', {username, password})
       .pipe(
         tap(data => {
           this.currentUser = username;
