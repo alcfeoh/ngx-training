@@ -1,18 +1,24 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {LicensePlate} from '../license-plate';
+import {Currency} from '../currency-switcher/currency';
+import {CurrencyPipe} from '@angular/common';
+import {CurrencyInfo} from '../currency.service';
 
 @Component({
   selector: 'app-license-plate',
   standalone: true,
   templateUrl: './license-plate.component.html',
+  imports: [
+    CurrencyPipe
+  ],
   styleUrls: ['./license-plate.component.css']
 })
 export class LicensePlateComponent {
+  // Signal-based component
+  plate = input.required<LicensePlate>();
 
-  @Input()
-  plate!: LicensePlate;
+  buttonText = input("");
 
-  @Input()
-  buttonText!: string;
+  currencyInfo = input.required<CurrencyInfo>();
 
 }

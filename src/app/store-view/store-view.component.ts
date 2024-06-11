@@ -4,6 +4,7 @@ import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import { HttpClient } from '@angular/common/http';
 import {LicensePlate} from '../license-plate';
 import {AsyncPipe} from '@angular/common';
+import {CurrencyService} from '../currency.service';
 
 @Component({
   selector: 'app-store-view',
@@ -16,5 +17,6 @@ export class StoreViewComponent {
 
   http = inject(HttpClient);
   plates$ = this.http.get<LicensePlate[]>("https://lp-store-server.vercel.app/data");
+  currencyInfo = inject(CurrencyService).getCurrency();
 
 }

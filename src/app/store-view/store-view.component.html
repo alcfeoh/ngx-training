@@ -4,7 +4,8 @@
 <div class="container">
   <div class="row" >
     @for(plate of plates$ | async; track plate._id) {
-      <app-license-plate buttonText="Add to cart" [plate]="plate" class="col-4">
+      <app-license-plate buttonText="Add to cart" [plate]="plate"
+                         [currencyInfo]="currencyInfo()" class="col-4">
       </app-license-plate>
     }
   </div>
