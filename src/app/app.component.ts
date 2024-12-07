@@ -4,10 +4,9 @@ import {LicensePlate} from "./license-plate";
 import {HelloComponent} from "./hello/hello.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HelloComponent],
-  template: `
+    selector: 'app-root',
+    imports: [HelloComponent],
+    template: `
       <app-hello></app-hello>
   `
 })
