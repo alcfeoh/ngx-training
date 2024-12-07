@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelloComponent } from './hello.component';
 import {By} from "@angular/platform-browser";
@@ -7,12 +7,12 @@ xdescribe('HelloComponent', () => {
   let component: HelloComponent;
   let fixture: ComponentFixture<HelloComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ HelloComponent ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HelloComponent);

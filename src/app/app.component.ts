@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import {CALIFORNIA_PLATE, LICENSE_PLATES} from "./mock-data";
-import {LicensePlate} from "./license-plate";
-import {HelloComponent} from "./hello/hello.component";
+import { Component, inject } from '@angular/core';
+import {NavigationComponent} from './navigation/navigation.component';
+import {  DatePipe } from '@angular/common';
+import { DateService } from './date.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HelloComponent],
-  template: `
-      <app-hello></app-hello>
-  `
+  imports: [
+    NavigationComponent,
+    RouterOutlet,
+    DatePipe
+  ],
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
-  licensePlates: LicensePlate[] = LICENSE_PLATES;
-  licensePlate: LicensePlate = CALIFORNIA_PLATE;
+
+  now = inject(DateService).getTodaysDate();
+
 }

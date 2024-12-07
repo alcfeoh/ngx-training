@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CurrencySwitcherComponent } from './currency-switcher.component';
 
@@ -6,12 +6,12 @@ describe('CurrencySwitcherComponent', () => {
   let component: CurrencySwitcherComponent;
   let fixture: ComponentFixture<CurrencySwitcherComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ CurrencySwitcherComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CurrencySwitcherComponent);

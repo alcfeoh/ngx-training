@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 import {CartService} from '../cart.service';
 import {NgFor, NgIf} from '@angular/common';
@@ -14,14 +14,13 @@ import {LicensePlateComponent} from '../license-plate/license-plate.component';
 })
 export class CartViewComponent {
 
-  cartContents: LicensePlate[] = [];
+  cartContents: Signal<LicensePlate[]>;
 
   constructor(private service: CartService) {
-    service.getCartContents().subscribe(data => this.cartContents = data);
+    this.cartContents = service.getCartContents();
   }
 
   removeFromCart(plate: LicensePlate): void {
-    // TODO
+    this.service.removeFromCart(plate);
   }
-
 }

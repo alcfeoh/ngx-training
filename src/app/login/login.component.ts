@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {LoginService} from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,11 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   login(username: string, password: string): void {
     this.loginService.login(username, password)
-      .subscribe(() => console.log('Successfully logged in'));
+      .subscribe(() => this.router.navigateByUrl("checkout"));
   }
 
 }

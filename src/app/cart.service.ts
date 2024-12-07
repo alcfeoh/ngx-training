@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import {Injectable, signal, Signal} from '@angular/core';
 import {Observable} from 'rxjs';
 import {LicensePlate} from './license-plate';
 import {HttpClient} from '@angular/common/http';
@@ -8,18 +9,31 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CartService {
 
+  readonly cartContents = signal<LicensePlate[]>([]);
+
   constructor(private http: HttpClient) { }
 
-  getCartContents(): Observable<LicensePlate[]> {
-    return this.http.get<LicensePlate[]>('http://localhost:8000/cart');
+  getCartContents(): Signal<LicensePlate[]> {
+    this.http.get<LicensePlate[]>('http://localhost:8000/cart')
+      .pipe()
+      .subscribe(
+         data => this.cartContents.set(data)
+    );
+    return this.cartContents;
   }
 
-  addToCart(plate: LicensePlate): Observable<unknown> {
-    return this.http.put('http://localhost:8000/cart/' + plate._id, null);
+  addToCart(plate: LicensePlate): Signal<LicensePlate[]> {
+    this.http.put('http://localhost:8000/cart/' + plate._id, null).subscribe(
+      () => this.getCartContents()
+    );
+    return this.cartContents
   }
 
-  removeFromCart(plate: LicensePlate): Observable<unknown> {
-    return this.http.delete('http://localhost:8000/cart/' + plate._id);
+  removeFromCart(plate: LicensePlate): Signal<LicensePlate[]> {
+     this.http.delete('http://localhost:8000/cart/' + plate._id).subscribe(
+        () => this.getCartContents()
+     );
+     return this.cartContents;
   }
 
 }

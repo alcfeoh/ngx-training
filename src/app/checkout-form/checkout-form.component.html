@@ -27,13 +27,24 @@
   <br>
   <div class="row">
     <div class="col-lg-6">
+      @if (zip.invalid && zip.touched) {
+        <div class="alert alert-danger">
+          Please enter a 5-digit zipcode
+        </div>
+      }
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Zip" name="zip" ngModel>
+        <input type="text" class="form-control" placeholder="Zip" name="zip" ngModel 
+             required pattern="[0-9]{5}" #zip="ngModel">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="State" name="state" ngModel>
+        <select class="form-control" name="state" ngModel>
+          <option value="">Select your state...</option>
+          @for(usState of usStates(); track usState.abbreviation) {
+            <option [value]="usState.abbreviation">{{usState.name}}</option>
+          }
+        </select>
       </div>
     </div>
   </div>
