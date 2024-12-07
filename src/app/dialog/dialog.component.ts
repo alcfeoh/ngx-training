@@ -1,14 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgIf} from '@angular/common';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css'],
-  imports: [NgIf],
-  standalone: true
+  styleUrls: ['./dialog.component.css']
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent implements OnInit, OnChanges {
 
   @Input()
   isOpen = false;
@@ -18,6 +15,10 @@ export class DialogComponent implements OnInit {
 
   @Output()
   onClose = new EventEmitter<string>();
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('NG ON CHANGES', changes);
+  }
 
   ngOnInit(): void {
     console.log('NG ON INIT');

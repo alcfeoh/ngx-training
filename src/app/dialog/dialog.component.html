@@ -1,13 +1,15 @@
-<div class="modalW" *ngIf="isOpen">
+@if (isOpen) {
+  <div class="modalW">
 
-  <!-- Modal content -->
-  <div class="modalW-content">
-    <div class="modalW-header">
-      <span class="close" (click)="closePopup()">&times;</span>
-      <h2>{{title}}</h2>
-    </div>
-    <div class="modalW-body">
-      <ng-content></ng-content>
+    <!-- Modal content -->
+    <div class="modalW-content">
+      <div class="modalW-header">
+        <span class="close" (click)="closePopup()">&times;</span>
+        <h2>{{title}}</h2>
+      </div>
+      <div class="modalW-body">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
-</div>
+}

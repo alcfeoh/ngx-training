@@ -5,7 +5,6 @@ import {CheckoutFormComponent} from '../checkout-form/checkout-form.component';
 
 @Component({
   selector: 'app-checkout-view',
-  standalone: true,
   imports: [JumbotronComponent, CheckoutFormComponent],
   templateUrl: './checkout-view.component.html',
   styleUrls: ['./checkout-view.component.css']
