@@ -1,8 +1,7 @@
-import {inject, Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, withLatestFrom} from 'rxjs';
+import {computed, inject, Injectable, Signal, signal} from '@angular/core';
 import {Currency} from './currency-switcher/currency';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 type ExchangeRates = Record<Currency, number>
 
@@ -11,22 +10,35 @@ type ExchangeRates = Record<Currency, number>
 })
 export class CurrencyService {
 
-  private currency$ = new BehaviorSubject<Currency>("USD");
-  private exchangeRates$ = inject(HttpClient).get<ExchangeRates>("https://lp-store-server.vercel.app/rates");
-  private currentRate$ = this.currency$.pipe(
-    withLatestFrom(this.exchangeRates$),
-    map(([curr, rates]) => rates[curr])
+  // private currency$ = new BehaviorSubject<Currency>("USD");
+  private currency = signal<Currency>("USD");
+
+  // private exchangeRates$ = inject(HttpClient).get<ExchangeRates>("https://lp-store-server.vercel.app/rates");
+  private exchangeRates = toSignal(
+    inject(HttpClient).get<ExchangeRates>("https://lp-store-server.vercel.app/rates"),
+    {initialValue: {USD: 1, EUR: 1, GBP: 1}}
   );
 
-  getExchangeRate(): Observable<number> {
-    return this.currentRate$;
+  //private currentRate$ = this.currency$.pipe(
+  //  withLatestFrom(this.exchangeRates$),
+  //  map(([curr, rates]) => rates[curr])
+  //);
+
+  private currentRate = computed(() => {
+    const rates = this.exchangeRates();
+    const curr = this.currency();
+    return rates[curr];
+  })
+
+  getExchangeRate(): Signal<number> {
+    return this.currentRate;
   }
 
-  getCurrency(): Observable<Currency> {
-    return this.currency$.asObservable();
+  getCurrency(): Signal<Currency> {
+    return this.currency.asReadonly();
   }
 
   setCurrency(currency: Currency): void {
-    this.currency$.next(currency);
+    this.currency.set(currency);
   }
 }

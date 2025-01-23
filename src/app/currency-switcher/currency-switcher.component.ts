@@ -15,7 +15,7 @@ export class CurrencySwitcherComponent {
 
   showItems = false;
   service = inject(CurrencyService);
-  currency$ = this.service.getCurrency();
+  currency = this.service.getCurrency();
 
   changeCurrency(currency: Currency): void {
     this.service.setCurrency(currency);
