@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
-import {LicensePlateComponent} from '../license-plate/license-plate.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import { HttpClient } from '@angular/common/http';
 import {LicensePlate} from '../license-plate';
 import {AsyncPipe} from '@angular/common';
+import {LicensePlateComponent} from '../license-plate/license-plate.component';
 
 @Component({
     selector: 'app-store-view',
-    imports: [LicensePlateComponent, JumbotronComponent, AsyncPipe],
+    imports: [JumbotronComponent, AsyncPipe, LicensePlateComponent],
     templateUrl: './store-view.component.html',
     styleUrl: './store-view.component.css'
 })
