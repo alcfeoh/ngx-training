@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HelloComponent } from './hello.component';
+import {HelloComponent} from './hello.component';
 import {By} from "@angular/platform-browser";
 
 xdescribe('HelloComponent', () => {

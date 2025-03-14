@@ -1,11 +1,18 @@
 <app-jumbotron title="Welcome to our store"
                description="Browse our collection of license plates"></app-jumbotron>
 
-<div class="container">
+<div class="container" #container >
   <div class="row" >
-    @for(plate of plates$ | async; track plate._id) {
+    @for(plate of plates() | slice:0:3; track plate._id) {
       <app-license-plate buttonText="Add to cart" [plate]="plate" class="col-4">
       </app-license-plate>
+    }
+
+    @defer (on interaction(container)){
+      @for(plate of plates() | slice:3; track plate._id) {
+        <app-license-plate buttonText="Add to cart" [plate]="plate" class="col-4">
+        </app-license-plate>
+      }
     }
   </div>
 </div>

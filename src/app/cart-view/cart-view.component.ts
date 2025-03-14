@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 import {CartService} from '../cart.service';
-import { NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 
 @Component({

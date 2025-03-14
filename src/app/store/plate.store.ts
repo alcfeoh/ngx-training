@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Store} from './store';
 import {LicensePlate} from '../license-plate';
 import {Observable} from 'rxjs/index';

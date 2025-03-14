@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LicensePlateComponent } from './license-plate.component';
+import {LicensePlateComponent} from './license-plate.component';
 
 xdescribe('LicensePlateComponent', () => {
   let component: LicensePlateComponent;

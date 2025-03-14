@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CurrencySwitcherComponent } from './currency-switcher.component';
+import {CurrencySwitcherComponent} from './currency-switcher.component';
 
 describe('CurrencySwitcherComponent', () => {
   let component: CurrencySwitcherComponent;

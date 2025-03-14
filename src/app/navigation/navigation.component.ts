@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {CurrencySwitcherComponent} from '../currency-switcher/currency-switcher.component';
 

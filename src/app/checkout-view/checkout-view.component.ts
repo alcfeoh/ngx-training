@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CartService} from '../cart.service';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {CheckoutFormComponent} from '../checkout-form/checkout-form.component';

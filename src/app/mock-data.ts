@@ -1,4 +1,3 @@
-
 import {LicensePlate} from "./license-plate";
 
 // This is for lab DC1
