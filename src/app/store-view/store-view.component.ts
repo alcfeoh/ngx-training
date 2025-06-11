@@ -6,11 +6,10 @@ import {LicensePlate} from '../license-plate';
 import {AsyncPipe} from '@angular/common';
 
 @Component({
-  selector: 'app-store-view',
-  standalone: true,
-  imports: [LicensePlateComponent, JumbotronComponent, AsyncPipe],
-  templateUrl: './store-view.component.html',
-  styleUrl: './store-view.component.css'
+    selector: 'app-store-view',
+    imports: [LicensePlateComponent, JumbotronComponent, AsyncPipe],
+    templateUrl: './store-view.component.html',
+    styleUrl: './store-view.component.css'
 })
 export class StoreViewComponent {
 
