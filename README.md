@@ -1,6 +1,6 @@
 # NgxTraining
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8, then updated version after version to the latest.
 
 ## Development server
 
