@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve-build-static": "http-server ./dist/ngx-training/browser",
-    "cleanup": "git clean -fd && git reset --hard"
+    "cleanup": "git clean -fd && git reset --hard",
+    "serve:ssr:ngx-training": "node dist/ngx-training/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +20,11 @@
     "@angular/forms": "^20.0.3",
     "@angular/platform-browser": "^20.0.3",
     "@angular/platform-browser-dynamic": "^20.0.3",
+    "@angular/platform-server": "^20.0.3",
     "@angular/router": "^20.0.3",
+    "@angular/ssr": "^20.0.2",
     "bootstrap": "4.6",
+    "express": "^5.1.0",
     "lp-store-server": "^2.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -30,7 +34,9 @@
     "@angular/build": "^20.0.2",
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.3",
+    "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.17.19",
     "http-server": "^14.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
