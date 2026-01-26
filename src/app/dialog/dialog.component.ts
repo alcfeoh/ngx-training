@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, input, model, OnChanges, OnInit, output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
@@ -7,14 +7,10 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 })
 export class DialogComponent implements OnInit, OnChanges {
 
-  @Input()
-  isOpen = false;
+  isOpen = model(false);
+  title = input("Title");
 
-  @Input()
-  title = "Title";
-
-  @Output()
-  onClose = new EventEmitter<string>();
+  onClose = output<string>();
 
   ngOnChanges(changes: SimpleChanges) {
     console.log('NG ON CHANGES', changes);
@@ -25,7 +21,7 @@ export class DialogComponent implements OnInit, OnChanges {
   }
 
   closePopup(): void {
-    this.isOpen = false;
+    this.isOpen.set(false);
     this.onClose.emit('Pop-up window closed');
   }
 }
