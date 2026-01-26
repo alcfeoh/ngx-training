@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 
 @Component({
@@ -8,10 +8,7 @@ import {LicensePlate} from '../license-plate';
 })
 export class LicensePlateComponent {
 
-  @Input()
-  plate!: LicensePlate;
-
-  @Input()
-  buttonText!: string;
+  plate = input.required<LicensePlate>();
+  buttonText =  input<string>();
 
 }
