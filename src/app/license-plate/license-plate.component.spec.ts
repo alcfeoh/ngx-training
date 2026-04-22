@@ -14,6 +14,16 @@ describe('LicensePlateComponent', () => {
 
     fixture = TestBed.createComponent(LicensePlateComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('plate', {
+      _id: '1',
+      onSale: false,
+      picture: '',
+      title: 'California 2010',
+      price: 10,
+      year: 2010,
+      state: 'CA',
+      description: 'A nice plate'
+    });
     fixture.detectChanges();
   });
 
