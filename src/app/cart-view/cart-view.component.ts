@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 import {CartService} from '../cart.service';
 
@@ -13,11 +13,8 @@ import {LicensePlateComponent} from '../license-plate/license-plate.component';
 })
 export class CartViewComponent {
 
-  cartContents: LicensePlate[] = [];
-
-  constructor(private service: CartService) {
-    service.getCartContents().subscribe(data => this.cartContents = data);
-  }
+  private service = inject(CartService);
+  cartContents = this.service.cartContents;
 
   removeFromCart(plate: LicensePlate): void {
     // TODO
