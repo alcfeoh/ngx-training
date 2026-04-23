@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {LoginService} from './login.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) { }
+  private loginService = inject(LoginService);
 
   login(username: string, password: string): void {
     this.loginService.login(username, password)

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {LicensePlate} from './license-plate';
 import {HttpClient} from '@angular/common/http';
@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   getCartContents(): Observable<LicensePlate[]> {
     return this.http.get<LicensePlate[]>('http://localhost:8000/cart');

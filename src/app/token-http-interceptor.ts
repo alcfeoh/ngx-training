@@ -10,7 +10,7 @@ import {HttpEvent, HttpHandlerFn, HttpRequest} from "@angular/common/http";
 export function tokenInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
   const loginService = inject(LoginService);
   console.log('INTERCEPTOR');
-  const token = loginService.getAuthToken();
+  const token = loginService.authToken();
   let newHeaders = req.headers;
   if (token) {
     newHeaders = newHeaders.append('authtoken', token);

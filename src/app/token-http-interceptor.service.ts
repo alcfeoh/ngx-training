@@ -16,7 +16,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log('INTERCEPTOR');
-    const token = this.loginService.getAuthToken();
+    const token = this.loginService.authToken();
     let newHeaders = req.headers;
     if (token) {
       newHeaders = newHeaders.append('authtoken', token);

@@ -1,40 +1,26 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {tap, map} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private isLoggedIn = false;
-  private currentUser!: string;
-  private authToken!: string;
+  readonly isUserLoggedIn = signal(false);
+  readonly currentUser = signal<string | undefined>(undefined);
+  readonly authToken = signal<string | undefined>(undefined);
+ private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
-
-  login(username: string, password: string): Observable<string> {
+  login(username: string, password: string): Observable<{token: string}> {
     return this.http.put<{token: string}>('http://localhost:8000/login', {username, password})
       .pipe(
         tap(data => {
-          this.currentUser = username;
-          this.isLoggedIn = true;
-          this.authToken = data.token;
-        }),
-        map(tokenObj => tokenObj.token)
+          this.currentUser.set(username);
+          this.isUserLoggedIn.set(true);
+          this.authToken.set(data.token);
+        })
       );
-  }
-
-  isUserLoggedIn(): boolean {
-    return this.isLoggedIn;
-  }
-
-  getCurrentUser(): string {
-    return this.currentUser;
-  }
-
-  getAuthToken(): string {
-    return this.authToken;
   }
 }
