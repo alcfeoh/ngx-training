@@ -2,7 +2,7 @@
   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" (click)="showItems = ! showItems">
     {{ 'USD' }}
   </button>
-  <div class="dropdown-menu show" [class.show]="showItems">
+  <div class="dropdown-menu show" [class.show]="showItems()">
     <a class="dropdown-item" >USD ($)</a>
     <a class="dropdown-item" >EUR (€)</a>
     <a class="dropdown-item" >GBP (£)</a>

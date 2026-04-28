@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Currency} from './currency';
 
 @Component({
@@ -8,9 +8,10 @@ import {Currency} from './currency';
 })
 export class CurrencySwitcherComponent {
 
-  showItems = false;
+  showItems = signal(false);
 
   changeCurrency(currency: Currency): void {
     // TODO
+    this.showItems.set(false);
   }
 }
