@@ -1,7 +1,7 @@
 <app-jumbotron title="My Cart" description="Your current cart contents:"></app-jumbotron>
 
 <div class="container">
-  @let cartItems = cartContents.value();
+  @let cartItems = cartContents$ | async;
   @if (cartItems?.length === 0) {
     <div class="alert alert-info" role="alert">Your cart is empty</div>
   }
