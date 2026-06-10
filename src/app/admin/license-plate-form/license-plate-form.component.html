@@ -1,0 +1,158 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-light">
+    <h3 class="card-title h5 mb-0">
+      {{ isEditMode() ? 'Edit License Plate' : 'Create License Plate' }}
+    </h3>
+  </div>
+  <div class="card-body">
+    <form (submit)="onSubmit($event)" novalidate>
+      <div class="form-group">
+        <label for="title" class="font-weight-bold">Title</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [class.is-invalid]="plateForm.title().touched() && plateForm.title().invalid()"
+          [formField]="plateForm.title"
+          placeholder="e.g. 2017 Florida license plate"
+        />
+        @if (plateForm.title().touched() && plateForm.title().invalid()) {
+          <div class="invalid-feedback">
+            @for (error of plateForm.title().errors(); track error) {
+              <div>{{ error.message }}</div>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="state" class="font-weight-bold">State Code</label>
+            <input
+              type="text"
+              id="state"
+              class="form-control"
+              [class.is-invalid]="plateForm.state().touched() && plateForm.state().invalid()"
+              [formField]="plateForm.state"
+              placeholder="e.g. FL"
+            />
+            @if (plateForm.state().touched() && plateForm.state().invalid()) {
+              <div class="invalid-feedback">
+                @for (error of plateForm.state().errors(); track error) {
+                  <div>{{ error.message }}</div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="year" class="font-weight-bold">Year</label>
+            <input
+              type="number"
+              id="year"
+              class="form-control"
+              [class.is-invalid]="plateForm.year().touched() && plateForm.year().invalid()"
+              [formField]="plateForm.year"
+              placeholder="e.g. 2017"
+            />
+            @if (plateForm.year().touched() && plateForm.year().invalid()) {
+              <div class="invalid-feedback">
+                @for (error of plateForm.year().errors(); track error) {
+                  <div>{{ error.message }}</div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="price" class="font-weight-bold">Price ($)</label>
+            <input
+              type="number"
+              id="price"
+              step="0.01"
+              class="form-control"
+              [class.is-invalid]="plateForm.price().touched() && plateForm.price().invalid()"
+              [formField]="plateForm.price"
+              placeholder="e.g. 10.00"
+            />
+            @if (plateForm.price().touched() && plateForm.price().invalid()) {
+              <div class="invalid-feedback">
+                @for (error of plateForm.price().errors(); track error) {
+                  <div>{{ error.message }}</div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="picture" class="font-weight-bold">Picture URL</label>
+        <input
+          type="text"
+          id="picture"
+          class="form-control"
+          [class.is-invalid]="plateForm.picture().touched() && plateForm.picture().invalid()"
+          [formField]="plateForm.picture"
+          placeholder="e.g. http://angulartraining.com/plates/FL.png"
+        />
+        @if (plateForm.picture().touched() && plateForm.picture().invalid()) {
+          <div class="invalid-feedback">
+            @for (error of plateForm.picture().errors(); track error) {
+              <div>{{ error.message }}</div>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="font-weight-bold">Description</label>
+        <textarea
+          id="description"
+          rows="3"
+          class="form-control"
+          [class.is-invalid]="plateForm.description().touched() && plateForm.description().invalid()"
+          [formField]="plateForm.description"
+          placeholder="Enter detailed description of the license plate..."
+        ></textarea>
+        @if (plateForm.description().touched() && plateForm.description().invalid()) {
+          <div class="invalid-feedback">
+            @for (error of plateForm.description().errors(); track error) {
+              <div>{{ error.message }}</div>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group form-check mb-4">
+        <input
+          type="checkbox"
+          id="onSale"
+          class="form-check-input"
+          [formField]="plateForm.onSale"
+        />
+        <label class="form-check-label font-weight-bold" for="onSale">
+          On Sale
+        </label>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <a routerLink="/admin/list" class="btn btn-secondary mr-2" role="button">
+          Cancel
+        </a>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="plateForm().invalid()"
+        >
+          Save Plate
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
