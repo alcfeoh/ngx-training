@@ -1,6 +1,6 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { form, FormField, required, min, minLength, submit } from '@angular/forms/signals';
+import { form, FormField, required, min, submit } from '@angular/forms/signals';
 import {AdminService, TemporaryPlate} from '../admin.service';
 import { LicensePlate } from '../../license-plate';
 
@@ -31,11 +31,9 @@ export class LicensePlateFormComponent implements OnInit {
     required(schemaPath.title, { message: 'Title is required' });
     required(schemaPath.state, { message: 'State is required' });
     required(schemaPath.price, { message: 'Price is required' });
-    min(schemaPath.price, 0, { message: 'Price must be 0 or greater' });
     required(schemaPath.year, { message: 'Year is required' });
     min(schemaPath.year, 1900, { message: 'Year must be 1900 or later' });
     required(schemaPath.description, { message: 'Description is required' });
-    minLength(schemaPath.description, 10, { message: 'Description must be at least 10 characters' });
     required(schemaPath.picture, { message: 'Picture URL is required' });
   });
 
