@@ -11,8 +11,8 @@
     "cleanup": "git clean -fd && git reset --hard"
   },
   "private": true,
+
   "dependencies": {
-    "@angular/animations": "^22.0.0",
     "@angular/common": "^22.0.0",
     "@angular/compiler": "^22.0.0",
     "@angular/core": "^22.0.0",
