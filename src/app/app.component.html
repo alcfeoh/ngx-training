@@ -1,11 +1,19 @@
-<!-- Insert navigation component here -->
+<app-navigation />
 
 <main role="main">
-  <!-- Insert jumbotron component here -->
-
+  <app-jumbotron title="Welcome to our store"
+                 description="Browse our collection of license plates"/>
+ <button (click)="licensePlates.reload()">
+   Refresh data
+ </button>
   <div class="container">
+    <app-checkout-form />
     <div class="row" >
-      <!-- License plates go here -->
+      @for (plate of licensePlates.value() ; track plate._id) {
+        <app-license-plate [plate]="plate" buttonText="Add to cart"
+          (buttonClick)="addToCart($event)"  class="col-md-4" />
+
+     }
     </div>
   </div>
 </main>

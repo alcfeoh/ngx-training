@@ -2,12 +2,15 @@
   <div class="row">
     <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Firstname" name="firstname" ngModel required>
+          <input type="text" class="form-control" placeholder="Firstname" [formField]="checkoutForm.firstName">
         </div>
     </div>
     <div class="col-lg-6">
+      @if(checkoutForm.lastName().invalid()) {
+        <div class="alert alert-danger">Name is required</div>
+      }
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Lastname" name="lastname" ngModel required>
+        <input type="text" class="form-control" placeholder="Lastname" [formField]="checkoutForm.lastName">
       </div>
     </div>
   </div>
@@ -15,12 +18,12 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Street" name="street" ngModel>
+        <input type="text" class="form-control" placeholder="Street" [formField]="checkoutForm.street">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="City" name="city" ngModel>
+        <input type="text" class="form-control" placeholder="City" [formField]="checkoutForm.city">
       </div>
     </div>
   </div>
@@ -28,7 +31,7 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Zip" name="zip" ngModel>
+        <input type="text" class="form-control" placeholder="Zip"  [formField]="checkoutForm.zip">
       </div>
     </div>
     <div class="col-lg-6">

@@ -3,7 +3,7 @@
 <p>{{plate().description}}</p>
 <div>
   <h2 class="float-left">${{plate().price}}</h2>
-  <button class="btn btn-primary float-right" role="button">
+  <button class="btn btn-primary float-right" (click)="buttonClick.emit(plate())" role="button">
     {{buttonText()}}
   </button>
 </div>

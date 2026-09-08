@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-jumbotron',
@@ -6,5 +6,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./jumbotron.component.css']
 })
 export class JumbotronComponent {
+
+  title = input.required<string>();
+  description = input.required<string>();
 
 }

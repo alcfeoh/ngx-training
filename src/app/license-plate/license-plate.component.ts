@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 
 @Component({
@@ -7,8 +7,9 @@ import {LicensePlate} from '../license-plate';
   styleUrls: ['./license-plate.component.css']
 })
 export class LicensePlateComponent {
-
+  // PRESENTATION COMPONENT = REUSABLE / SIMPLE / NO CONNECTION TO BUSINESS LOGIC
   plate = input.required<LicensePlate>();
   buttonText =  input<string>();
+  buttonClick = output<LicensePlate>();
 
 }
