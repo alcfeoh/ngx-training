@@ -4,15 +4,23 @@
   <app-jumbotron title="Welcome to our store"
                  description="Browse our collection of license plates"/>
   <div class="container">
-    <button class="btn btn-info" (click)="licensePlates.reload()">
+    <button class="btn btn-info" (click)="licensePlates.reload()" style="margin-bottom: 20px;">
       Refresh data
     </button>
     <div class="row" >
-      @for (plate of licensePlates.value() ; track plate._id) {
-        <app-license-plate [plate]="plate" buttonText="Add to cart"
-          (buttonClick)="addToCart($event)"  class="col-md-4" />
+      @boundary {
+        @for (plate of licensePlates.value() ; track plate._id) {
+          <app-license-plate [plate]="plate" buttonText="Add to cart"
+            (buttonClick)="addToCart($event)"  class="col-md-4" />
 
-     }
+       }
+      } @error {
+       <div class="alert-danger alert col-md-12">
+         <p>Server error, data unavailable:</p>
+         <p>{{$error.message}}</p>
+         <button class="btn btn-light" (click)="$reset()">Try again</button>
+       </div>
+    }
     </div>
   </div>
 </main>
