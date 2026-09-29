@@ -24,4 +24,9 @@ export class AppComponent {
     this.cartService.addToCart(plate).subscribe(() => alert("Plate added to cart! "));
   }
 
+  reset(boundaryReset: () => void) {
+    this.licensePlates.reload();
+    boundaryReset();
+  }
+
 }
