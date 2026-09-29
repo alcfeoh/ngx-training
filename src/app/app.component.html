@@ -3,11 +3,10 @@
 <main role="main">
   <app-jumbotron title="Welcome to our store"
                  description="Browse our collection of license plates"/>
- <button (click)="licensePlates.reload()">
-   Refresh data
- </button>
   <div class="container">
-    <app-checkout-form />
+    <button class="btn btn-info" (click)="licensePlates.reload()">
+      Refresh data
+    </button>
     <div class="row" >
       @for (plate of licensePlates.value() ; track plate._id) {
         <app-license-plate [plate]="plate" buttonText="Add to cart"
