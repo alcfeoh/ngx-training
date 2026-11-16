@@ -6,7 +6,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab22d8dc1f7fa170c9d",
     "onSale": false,
-    "picture": "http://angulartraining.com/plates/GA.jpg",
+    "picture": "https://angulartraining.com/plates/GA.jpg",
     "title": "2008 Georgia license plate",
     "price": 8.55,
     "year": 2008,
@@ -16,7 +16,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab2fea86aa6a3180710",
     "onSale": true,
-    "picture": "http://angulartraining.com/plates/NJ.jpg",
+    "picture": "https://angulartraining.com/plates/NJ.jpg",
     "title": "2015 New Jersey license plate",
     "price": 11,
     "year": 2015,
@@ -26,7 +26,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab27aecc7e77f4d73f0",
     "onSale": false,
-    "picture": "http://angulartraining.com/plates/CA.png",
+    "picture": "https://angulartraining.com/plates/CA.png",
     "title": "2013 California My Tahoe license plate",
     "price": 9,
     "year": 2013,
@@ -36,7 +36,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab2e0ecc5ad7160530e",
     "onSale": true,
-    "picture": "http://angulartraining.com/plates/CO.jpg",
+    "picture": "https://angulartraining.com/plates/CO.jpg",
     "title": "2010 Colorado license plate",
     "price": 5,
     "year": 2010,
@@ -46,7 +46,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab244b4ae424ec5ecae",
     "onSale": false,
-    "picture": "http://angulartraining.com/plates/FL.png",
+    "picture": "https://angulartraining.com/plates/FL.png",
     "title": "2017 Florida license plate",
     "price": 10,
     "year": 2017,
@@ -56,7 +56,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab26a89ddc39aeb44bf",
     "onSale": false,
-    "picture": "http://angulartraining.com/plates/UT.jpg",
+    "picture": "https://angulartraining.com/plates/UT.jpg",
     "title": "2014 Utah license plate",
     "price": 10,
     "year": 2014,
@@ -66,7 +66,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab230637b3ea41203e9",
     "onSale": true,
-    "picture": "http://angulartraining.com/plates/NY.jpg",
+    "picture": "https://angulartraining.com/plates/NY.jpg",
     "title": "2016 New York license plate",
     "price": 9,
     "year": 2016,
@@ -76,7 +76,7 @@ export const LICENSE_PLATES: LicensePlate[] = [
   {
     "_id": "5a0c8ab21b3a613ec15a0073",
     "onSale": false,
-    "picture": "http://angulartraining.com/plates/PA.jpg",
+    "picture": "https://angulartraining.com/plates/PA.jpg",
     "title": "2007 Pennsylvania license plate",
     "price": 11,
     "year": 2007,
