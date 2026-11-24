@@ -4,21 +4,20 @@ import {CartService} from '../cart.service';
 
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {LicensePlateComponent} from '../license-plate/license-plate.component';
-import {AsyncPipe} from "@angular/common";
 
 @Component({
   selector: 'app-cart-view',
-  imports: [JumbotronComponent, LicensePlateComponent, AsyncPipe],
+  imports: [JumbotronComponent, LicensePlateComponent],
   templateUrl: './cart-view.component.html',
   styleUrls: ['./cart-view.component.css']
 })
 export class CartViewComponent {
 
   private service = inject(CartService);
-  cartContents$ = this.service.getCartContents();
+  cartQuery = this.service.cartQuery;
 
   removeFromCart(plate: LicensePlate): void {
-    // TODO
+    this.service.removeFromCartMutation.mutate(plate);
   }
 
 }

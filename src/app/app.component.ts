@@ -21,7 +21,9 @@ export class AppComponent {
   cartService = inject(CartService);
 
   addToCart(plate: LicensePlate) {
-    this.cartService.addToCart(plate).subscribe(() => alert("Plate added to cart! "));
+    this.cartService.addToCartMutation.mutate(plate, {
+      onSuccess: () => alert("Plate added to cart! ")
+    });
   }
 
   reset(boundaryReset: () => void) {
