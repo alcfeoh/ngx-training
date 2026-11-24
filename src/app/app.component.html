@@ -4,12 +4,12 @@
   <app-jumbotron title="Welcome to our store"
                  description="Browse our collection of license plates"/>
   <div class="container">
-    <button class="btn btn-info" (click)="licensePlates.reload()" style="margin-bottom: 20px;">
+    <button class="btn btn-info" (click)="licensePlatesQuery.refetch().then()" style="margin-bottom: 20px;">
       Refresh data
     </button>
     <div class="row" >
       @boundary {
-        @for (plate of licensePlates.value() ; track plate._id) {
+        @for (plate of licensePlatesQuery.data() ; track plate._id) {
           <app-license-plate [plate]="plate" buttonText="Add to cart"
             (buttonClick)="addToCart($event)"  class="col-md-4" />
 

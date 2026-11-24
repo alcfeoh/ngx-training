@@ -17,7 +17,7 @@ import {CartService} from "./cart.service";
 })
 export class AppComponent {
 
-  licensePlates = inject(LicensePlateService).licensePlates;
+  licensePlatesQuery = inject(LicensePlateService).licensePlatesQuery;
   cartService = inject(CartService);
 
   addToCart(plate: LicensePlate) {
@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   reset(boundaryReset: () => void) {
-    this.licensePlates.reload();
+    this.licensePlatesQuery.refetch().then();
     boundaryReset();
   }
 
